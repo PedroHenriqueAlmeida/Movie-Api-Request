@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MovieApiRequest</string>
+    <string name="ocorreu_erro_durante_busca_filmes">Ocorreu um erro durante a busca dos filmes!</string>
+    <string name="ocorreu_erro_durante_busca_filmes_relacionados">Ocorreu um erro durante a busca dos filmes relacionados!</string>
+    <string name="ocorreu_erro_durante_busca_generos_filmes">Ocorreu um erro durante a busca dos gêneros dos filmes!</string>
 </resources>
