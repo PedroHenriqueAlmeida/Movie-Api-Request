@@ -1,4 +1,4 @@
-package com.pedro.movieapi.models.movie.similar
+package com.pedro.movieapirequest.models.similarmovie
 
 data class SimilarMovies(
     val page: Int,

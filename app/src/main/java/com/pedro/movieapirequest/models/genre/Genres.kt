@@ -1,4 +1,4 @@
-package com.pedro.movieapi.models.movie.genre
+package com.pedro.movieapirequest.models.genre
 
 data class Genres(
     val genres: List<Genre>
