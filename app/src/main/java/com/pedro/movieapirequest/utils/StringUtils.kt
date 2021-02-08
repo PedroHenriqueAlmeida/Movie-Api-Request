@@ -20,10 +20,12 @@ object StringUtils {
 
         var joined = ""
         var currentSeparator = ""
+
         list?.forEach({
             joined += currentSeparator + it.toString()
             currentSeparator = separator
         })
+
         return joined
     }
 }

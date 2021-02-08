@@ -65,7 +65,9 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun getSimilarMoviesCallback(genres: Genres, movie: Movie) =
         object : ICallbackResponse<SimilarMovies> {
+
             override fun onSuccess(data: SimilarMovies) {
+
                 val genreMap = HashMap<Int, Genre>()
                 genres.genres?.forEach({
                     genreMap[it.id] = it
@@ -90,6 +92,7 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             override fun onError(message: String) {
+
                 moviesLiveData.postValue(Resources.Error(message))
             }
         }

@@ -25,11 +25,13 @@ abstract class AbstractWebService(
     protected fun <T> defaultCallback(callback: ICallbackResponse<T>, errorMessage: String) =
         object : Callback<T> {
             override fun onFailure(call: Call<T>, t: Throwable) {
+
                 t.message?.let { Log.e(getTag(), it) }
                 callback.onError(errorMessage)
             }
 
             override fun onResponse(call: Call<T>, response: Response<T>) {
+
                 if (response.isSuccessful && response.body() != null) {
                     callback.onSuccess(response.body()!!)
                     Log.d(getTag(), response.toString())
