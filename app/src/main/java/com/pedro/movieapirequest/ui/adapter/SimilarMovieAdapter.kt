@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.pedro.movieapirequest.models.similarmovie.SimilarMovie
 import com.pedro.movieapirequest.R
 import com.pedro.movieapirequest.databinding.AdapterSimilarMovieBinding
+import com.pedro.movieapirequest.models.similarmovie.SimilarMovie
 import com.pedro.movieapirequest.utils.ApiUtils
+import com.pedro.movieapirequest.utils.SharedPreferencesUtils
+import com.pedro.movieapirequest.utils.SharedPreferencesUtils.SIMILAR_MOVIE_WATCHED
 import com.pedro.movieapirequest.utils.StringUtils
 
 class SimilarMovieAdapter(
@@ -53,6 +55,15 @@ class SimilarMovieAdapter(
                 similarMovieGenres.text = StringUtils.join(similarMovie.genres, ", ")
                 similarMovieReleaseYear.text =
                     StringUtils.substring(similarMovie.release_date, 0, 4)
+
+                similarMovieLayout.setOnClickListener({
+                    similarMovie.watchedMovie = !similarMovie.watchedMovie
+                    SharedPreferencesUtils.setBoolean(
+                        similarMovie.watchedMovie,
+                        String.format(SIMILAR_MOVIE_WATCHED, similarMovie.id),
+                        context.applicationContext
+                    )
+                })
             }
 
             Glide.with(context)

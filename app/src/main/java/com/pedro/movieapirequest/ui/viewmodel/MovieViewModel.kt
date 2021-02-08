@@ -13,10 +13,11 @@ import com.pedro.movieapirequest.models.movie.Movies
 import com.pedro.movieapirequest.models.resources.Resources
 import com.pedro.movieapirequest.models.similarmovie.SimilarMovies
 import com.pedro.movieapirequest.utils.SharedPreferencesUtils
+import com.pedro.movieapirequest.utils.SharedPreferencesUtils.IS_LIKED
+import com.pedro.movieapirequest.utils.SharedPreferencesUtils.SIMILAR_MOVIE_WATCHED
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val IS_LIKED = "IS_LIKED"
     private val webService = MovieWebService(application)
     private val moviesLiveData = MutableLiveData<Resources<Movies>>()
 
@@ -72,6 +73,12 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
                 data.results?.forEach({
                     it.genres = convertGenres(genreMap, it.genre_ids)
+                    it.watchedMovie = SharedPreferencesUtils.getBoolean(
+                        String.format(
+                            SIMILAR_MOVIE_WATCHED,
+                            it.id
+                        ), getApplication()
+                    )
                 })
 
                 val movies = Movies(
