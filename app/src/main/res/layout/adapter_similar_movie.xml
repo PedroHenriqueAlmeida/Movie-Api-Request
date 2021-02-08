@@ -73,5 +73,16 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:id="@+id/dividerItemDecoration"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="8dp"
+            android:background="#1E1E1E"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/similarMovieImage" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

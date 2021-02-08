@@ -22,4 +22,10 @@ data class Movie(
             vote_count = value
             notifyPropertyChanged(BR.vote)
         }
+
+    @Bindable("vote")
+    fun getFormattedVote(): String {
+
+        return String.format("%,d", vote).replace(',', '.')
+    }
 }

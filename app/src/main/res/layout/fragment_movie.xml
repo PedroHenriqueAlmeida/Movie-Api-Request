@@ -34,6 +34,12 @@
                     android:layout_height="600dp"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_constraintBottom_toBottomOf="@id/movieImage"
+                    android:background="@drawable/shadow_gradient" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/movieInfoLayout"
                     android:layout_width="match_parent"
@@ -70,6 +76,7 @@
                             android:checked="@={movie.liked}"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <LinearLayout
@@ -86,7 +93,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawablePadding="4dp"
-                            android:text="@{Integer.toString(movie.vote)}"
+                            android:text="@{movie.formattedVote}"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_size_16"
                             app:drawableLeftCompat="@drawable/ic_full_heart_16"
