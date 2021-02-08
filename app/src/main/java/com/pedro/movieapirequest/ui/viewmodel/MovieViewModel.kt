@@ -12,13 +12,18 @@ import com.pedro.movieapirequest.models.movie.Movie
 import com.pedro.movieapirequest.models.movie.Movies
 import com.pedro.movieapirequest.models.resources.Resources
 import com.pedro.movieapirequest.models.similarmovie.SimilarMovies
+import com.pedro.movieapirequest.utils.SharedPreferencesUtils
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val IS_LIKED = "IS_LIKED"
     private val webService = MovieWebService(application)
     private val moviesLiveData = MutableLiveData<Resources<Movies>>()
 
     fun getMoviesLiveData(): LiveData<Resources<Movies>> = moviesLiveData
+
+    fun saveLike(isLiked: Boolean) =
+        SharedPreferencesUtils.setBoolean(isLiked, IS_LIKED, getApplication())
 
     fun searchMovies() {
 
@@ -42,6 +47,11 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private fun getMovieCallback(genres: Genres) = object : ICallbackResponse<Movie> {
 
         override fun onSuccess(data: Movie) {
+
+            SharedPreferencesUtils.getBoolean(IS_LIKED, getApplication()).also {
+                data.liked = it
+                data.vote += if (it) 1 else 0
+            }
 
             webService.searchSimilarMovies(getSimilarMoviesCallback(genres, data))
         }

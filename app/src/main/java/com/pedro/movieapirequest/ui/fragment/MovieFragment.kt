@@ -21,7 +21,6 @@ import com.pedro.movieapirequest.ui.adapter.SimilarMovieAdapter
 import com.pedro.movieapirequest.ui.viewmodel.MovieViewModel
 import com.pedro.movieapirequest.utils.ApiUtils
 
-
 class MovieFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieBinding
@@ -87,6 +86,7 @@ class MovieFragment : Fragment() {
                 } else {
                     movie.vote -= 1
                 }
+                viewModel.saveLike(btnLike.isChecked)
             })
         }
 
