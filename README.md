@@ -1,9 +1,5 @@
 # Movie-Api-Request
 
-O aplicativo <b>Movie-Api-Request</b> foi feito para quem deseja armazenar informações do seu filme preferido!
-O app te possibilita verificar informações de quantas pessoas já gostaram do filme, de quantas visualizações o filme possui, 
-selecionar filmes já assistidos e gostar do filme.
-
 # Parte técnica
 
 O projeto <b>Movie-Api-Request</b> foi desenvolvido para dispositivos <b>Android</b> com a linguagem <b>Kotlin</b>.
